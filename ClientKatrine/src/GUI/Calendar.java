@@ -14,12 +14,7 @@ public class Calendar {
 //	}
 		//Calendar frameTabel = new Calendar();
 	
-		//JLabel welcome = new JLabel("Welcome to CBS Calendar");
-		//JPanel panel = new JPanel();
-		//JButton addCalendar = new JButton("Add Calendar");
-		//JButton addEvent = new JButton("Add Event");
-		//JButton addNote = new JButton("Add Note");
-		//JButton share = new JButton("Share...");
+		
 		
 		static JLabel lblDay,lblWeek, lblMonth, lblYear;
 		static JButton btnPreview, btnNext;
