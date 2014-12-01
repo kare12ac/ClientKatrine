@@ -2,8 +2,6 @@ package GUI;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.GregorianCalendar;
@@ -30,13 +28,13 @@ public class Calendar {
 		
 		
 		
-//		JLabel welcome = new JLabel("Welcome to CBS Calendar");
-//		JPanel panel = new JPanel();
-//		JButton addCalendar = new JButton("Add Calendar");
-//		JButton addEvent = new JButton("Add Event");
-//		JButton addNote = new JButton("Add Note");
-//		JButton share = new JButton("Share...");
-//		
+		JLabel welcome = new JLabel("Welcome to CBS Calendar");
+		JPanel panel = new JPanel();
+		JButton addCalendar = new JButton("Add Calendar");
+		JButton addEvent = new JButton("Add Event");
+		JButton addNote = new JButton("Add Note");
+		JButton share = new JButton("Share...");
+	
 		
 		
 		
@@ -61,7 +59,12 @@ public class Calendar {
 		lblWeek = new JLabel("1");
 		btnPreview = new JButton("<<");
 		btnNext = new JButton(">>");
-		mtblCalendar = new DefaultTableModel(){public boolean isCellEditable(int rowIndex, int mColIndex){return false;}};
+		mtblCalendar = new DefaultTableModel(){/**
+			 * 
+			 */
+		private static final long serialVersionUID = 8128849326616629044L;
+
+		public boolean isCellEditable(int rowIndex, int mColIndex){return false;}};
 		tblCalendar = new JTable(mtblCalendar);
 		//tblWeek = new JTable(wtblCalendar);
 		//tblDay = new JTable(dtblCalendar);
@@ -199,6 +202,11 @@ public class Calendar {
 		tblCalendar.setDefaultRenderer(tblCalendar.getColumnClass(0), new tblCalendarRenderer());
 		}
 		static class tblCalendarRenderer extends DefaultTableCellRenderer{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 8701195806506032914L;
+
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean selected,
 				boolean focused, int row,int column	
 					){
