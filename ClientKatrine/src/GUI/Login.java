@@ -21,7 +21,7 @@ import java.awt.event.*;
 public class Login  extends JFrame{
 	
 	public static void main(String[]args){
-		Login frameTabel = new Login2();
+		Login frameTabel = new Login();
 		
 	}
 		JButton btnlogin = new JButton("Login");
