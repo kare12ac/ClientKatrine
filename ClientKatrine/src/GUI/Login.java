@@ -1,14 +1,27 @@
 package GUI;
 import javax.swing.*;
+
+import com.google.gson.Gson;
+
+import JsonClasses.AuthUser;
+//import shared.LogInObject;
+//import shared.LogInReturnObject;
+
+
+import Logic.ServerConnection;
+import Logic.TCPClient;
+
 import java.awt.*;
 import java.awt.event.*;
+
+//import logic.ServerConnection;
 
 
 
 public class Login  extends JFrame{
 	
 	public static void main(String[]args){
-		Login frameTabel = new Login();
+		Login frameTabel = new Login2();
 		
 	}
 		JButton btnlogin = new JButton("Login");
@@ -17,7 +30,7 @@ public class Login  extends JFrame{
 		JPasswordField password = new JPasswordField(15);
 		JLabel UN = new JLabel("Username");
 		JLabel PW = new JLabel ("Password");
-		Login(){
+		login(){
 			super("Login Autentification");
 			setSize(1000,1000);
 			setLocation(500,280);
@@ -48,16 +61,19 @@ public class Login  extends JFrame{
 					public void actionPerformed(ActionEvent event){
 						String uname = txtUser.getText();
 						String pword = password.getText();
-						if(uname.equals("kare12ac")&&pword.equals("5678")){
-							Calendar calendar= new Calendar();
-							calendar.setVisible(true);
-							dispose();
+						AuthUser login = new AuthUser();
+						login.setAuthUserEmail(uname);
+						login.setAuthUserPassword(pword);
+						login.setAuthUserIsAdmin(false);
+						Gson gson = new Gson();
+						String jsonString = gson.toJson(login);
+						TCPClient connection = new ServerConnection();
+						
+						
+						if(
 						}else{
 							
-							JOptionPane.showMessageDialog(null, "Wrong Password or Username");
-							txtUser.setText("");
-							password.setText("");
-							txtUser.requestFocus();
+							
 						}
 					}
 				});
@@ -65,3 +81,4 @@ public class Login  extends JFrame{
 
 
 }
+
