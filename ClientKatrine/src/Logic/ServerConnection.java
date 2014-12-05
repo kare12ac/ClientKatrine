@@ -20,39 +20,39 @@ public class ServerConnection {
 	
 	private encryption encryptionObject = new encryption(); 
 	
-//	public String connectToServerAndSendReturnObject(String jsonOut) throws IOException{
-//		System.out.println("Attempting connection...");
-//		connectionClient = new Socket(InetAddress.getByName("localhost"), 8349);
-//		System.out.println("Connected to "+connectionClient.getInetAddress().getHostAddress());
-//		byteArrayOut = encryptionObject.encrypted(jsonOut);
-//		connectionClient.getOutputStream().write(byteArrayOut);
+	public String connectToServerAndSendReturnObject(String jsonOut) throws IOException{
+		System.out.println("Attempting connection...");
+		connectionClient = new Socket(InetAddress.getByName("localhost"), 8349);
+		System.out.println("Connected to "+connectionClient.getInetAddress().getHostAddress());
+		//byteArrayOut = encryptionObject.encrypted(jsonOut);
+		connectionClient.getOutputStream().write(byteArrayOut);
+		
+		connectionClient.getInputStream().read(byteArrayIn);
+	
+		jsonIn = encryptionObject.decrypt(byteArrayIn);
+	
+		return jsonIn;
+		
+		
+	//	public String connectToServerAndSendReturnObject(String jsonOut) throws IOException{
+			
+//			System.out.println("Attempting connection...");
+//			connectionClient = new Socket(InetAddress.getByName("localhost"), 8888);
+//			System.out.println("Connected to "+connectionClient.getInetAddress().getHostAddress());
+//			
+//			Gson g = new Gson();
+//			
+//			//String ut = g.toJson(jsonOut);
+//			System.out.println("Slik at det bli slik: " + jsonOut);
 //		
-//		connectionClient.getInputStream().read(byteArrayIn);
-//	
-//		jsonIn = encryptionObject.decrypt(byteArrayIn);
+//			System.out.println("Siden det må sendes i bytes så gjøres det om til bytes ");
+//			byteArrayOut = jsonOut.getBytes();
 //		
-//		return jsonIn;
-		
-		
-		public String connectToServerAndSendReturnObject(String jsonOut) throws IOException{
-			
-			System.out.println("Attempting connection...");
-			connectionClient = new Socket(InetAddress.getByName("localhost"), 8888);
-			System.out.println("Connected to "+connectionClient.getInetAddress().getHostAddress());
-			
-			Gson g = new Gson();
-			
-			//String ut = g.toJson(jsonOut);
-			System.out.println("Slik at det bli slik: " + jsonOut);
-		
-			System.out.println("Siden det må sendes i bytes så gjøres det om til bytes ");
-			byteArrayOut = jsonOut.getBytes();
-		
-			System.out.println("Så sendes det til server");
-			connectionClient.getOutputStream().write(byteArrayOut);
-			System.out.println("Sendt");
-			
-			return "hello";
+//			System.out.println("Så sendes det til server");
+//			connectionClient.getOutputStream().write(byteArrayOut);
+//			System.out.println("Sendt");
+//			
+//			return "hello";
 			
 //			
 //			public String connectToServerAndSendReturnObject(String jsonOut) throws IOException{

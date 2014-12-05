@@ -2,6 +2,7 @@ package GUI;
 import javax.swing.*;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import JsonClasses.AuthUser;
 //import shared.LogInObject;
@@ -13,6 +14,7 @@ import Logic.TCPClient;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 //import logic.ServerConnection;
 
@@ -30,7 +32,8 @@ public class Login  extends JFrame{
 		JPasswordField password = new JPasswordField(15);
 		JLabel UN = new JLabel("Username");
 		JLabel PW = new JLabel ("Password");
-		login(){
+		
+		public Login(){
 			super("Login Autentification");
 			setSize(1000,1000);
 			setLocation(500,280);
@@ -67,18 +70,54 @@ public class Login  extends JFrame{
 						login.setAuthUserIsAdmin(false);
 						Gson gson = new Gson();
 						String jsonString = gson.toJson(login);
-						TCPClient connection = new ServerConnection();
-						
-						
-						if(
-						}else{
-							
-							
+						ServerConnection connection = new ServerConnection();
+						String LoginAU =("");
+						try{
+							LoginAU =connection.connectToServerAndSendReturnObject(jsonString);
+						}catch(JsonSyntaxException e1){
+							e1.printStackTrace();
+						}catch (IOException e1){
+							e1.printStackTrace();
 						}
+						if(LoginAU.equals("0")){
+							Calendar calendar = new Calendar();
+								calendar.setVisible(true);
+								dispose();
+								
+						}else{
+							JOptionPane.showMessageDialog(null, "Wrong password, username or user is unactive");
+							txtUser.setText("");
+							password.setText("");
+							txtUser.requestFocus();
+						
+						
+						}
+							
 					}
-				});
+				}
+			
+			);
 			}
+		
 
+//	try {
+//		loginreturn = gson.fromJson(connection.connectToServerAndSendReturnObject(jsonString), LogInReturnObject.class);
+//	} catch (JsonSyntaxException e1) {
+//		e1.printStackTrace();
+//	} catch (IOException e1) {
+//		e1.printStackTrace();
+//	}
+//	
+//	if(loginreturn.isLogOn()){
+//		Calendar calendar= new Calendar();
+//		calendar.setVisible(true);
+//		dispose();
+//	}else{
+//		
+//		JOptionPane.showMessageDialog(null, loginreturn.getExplanation());
+//		txtUser.setText("");
+//		password.setText("");
+//		txtUser.requestFocus();
 
 }
 
