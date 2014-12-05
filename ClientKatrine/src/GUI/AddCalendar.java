@@ -48,10 +48,10 @@ public class AddCalendar extends JFrame {
 	txtCalName.setBounds(187,80,150,20);
 	txtpubPriv.setBounds(187,112,150,20);
 	btnCreate.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	btnCreate.setBounds(286,488,140,29);
-	btnCancel.setBounds(219, 488, 67, 29);
-	AC.setFont(new Font("Arial", Font.BOLD, 30));
-	AC.setForeground(new Color(0, 0, 128));
+	btnCreate.setBounds(261,406,140,29);
+	btnCancel.setBounds(160, 406, 67, 29);
+	AC.setFont(new Font("Arial", Font.BOLD, 22));
+	AC.setForeground(Color.ORANGE);
 	AC.setBounds(187, 6, 198, 74);
 	N.setBounds(35, 75, 115, 30);
 	prpu.setBounds(35, 117, 150, 15);

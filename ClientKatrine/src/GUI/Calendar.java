@@ -40,7 +40,7 @@ import JsonClasses.testing;
 		static int realDay, realWeek, currentDay,currentWeek;
 		static JMenuBar menuBar;
 		static JMenu addMenu,deleteMenu,othersMenu;
-		static JMenuItem newCalendar, newEvent, newNote, deleteCalendar,deleteEvent,deleteNote,weather,qoute,impCalendar,impEvent;
+		static JMenuItem newCalendar, newEvent, newNote, deleteCalendar,deleteEvent,deleteNote,weather,quote,impCalendar,impEvent;
 		
 				
 		public static void main(String args[] ){
@@ -100,7 +100,7 @@ import JsonClasses.testing;
 		//delEvent.addActionListener(new delEvent_Action());
 		delNote.addActionListener(new delNote_Action());
 		weather.addActionListener(new weather_Action());
-		qoute.addActionListner(new quote_Action());
+		quote.addActionListener(new quote_Action());
 //		impEvent.addActionListener(new impEvent_Action());
 //		impCalendar.addActionListner(new impCalendar_Action());
 		
@@ -339,7 +339,8 @@ import JsonClasses.testing;
 				public void actionPerformed(ActionEvent e){
 				WeatherForcast weatherForcast = new WeatherForcast();
 				weatherForcast.setVisible(true);
-			
+				}
+			}
 			
 				static class quote_Action implements ActionListener{
 			public void actionPerformed(ActionEvent e){

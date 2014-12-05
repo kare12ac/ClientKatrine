@@ -1,5 +1,7 @@
 package GUI;
 
-public class RemoveEvents {
+public class RemoveEvents extends JFrame {
 
+	
+	
 }

@@ -32,9 +32,9 @@ public class Quote extends JFrame{
 		quote.setHorizontalAlignment(SwingConstants.CENTER);
 		quote.setBounds(6, 125, 988, 25);
 		btnexit.setBounds(201, 282, 104, 33);
-		headline.setForeground(new Color(0, 0, 128));
-		headline.setFont(new Font("Arial", Font.BOLD, 20));
-		headline.setBounds(190, -1, 168, 33);
+		headline.setForeground(Color.ORANGE);
+		headline.setFont(new Font("Arial", Font.BOLD, 22));
+		headline.setBounds(190, 32, 168, 33);
 		
 		panel.add(author);
 		panel.add(topic);
@@ -44,13 +44,13 @@ public class Quote extends JFrame{
 		getContentPane().add(panel);
 		
 		JLabel lblAuthor = new JLabel("Author:");
-		lblAuthor.setBounds(17, 44, 53, 16);
+		lblAuthor.setBounds(26, 158, 53, 16);
 		panel.add(lblAuthor);
 		
 		JLabel lblTopic = new JLabel("Topic:");
-		lblTopic.setBounds(17, 97, 44, 16);
+		lblTopic.setBounds(26, 186, 44, 16);
 		panel.add(lblTopic);
-		lblQuote.setBounds(16, 148, 44, 16);
+		lblQuote.setBounds(26, 214, 44, 16);
 		
 		panel.add(lblQuote);
 		

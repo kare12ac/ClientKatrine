@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
 
 public class RemoveCalendar extends JFrame {
 
@@ -22,6 +24,7 @@ public class RemoveCalendar extends JFrame {
 	
 	JButton Delete = new JButton("Delete");
 	JButton Cancel = new JButton("Cancel");
+	private final JLabel lblDeleteCalendar = new JLabel("Delete Calendar");
 	
 	public RemoveCalendar(){
 		super("Delete Calender");
@@ -29,14 +32,14 @@ public class RemoveCalendar extends JFrame {
 		setLocation(500,290);
 		panel.setLayout(null);
 		
-	caln.setBounds(48, 50, 100, 50);	
-	un.setBounds(48, 112, 100, 50);
+	caln.setBounds(6, 134, 100, 29);	
+	un.setBounds(6, 164, 100, 29);
 	
-	calntf.setBounds(225,50,100,50);
-	untf.setBounds(225, 112, 100, 50);
+	calntf.setBounds(168,134,100,29);
+	untf.setBounds(168, 164, 100, 29);
 	
-	Delete.setBounds(61, 271, 100, 50);
-	Cancel.setBounds(238, 271, 100, 50);
+	Delete.setBounds(104, 347, 100, 29);
+	Cancel.setBounds(236, 350, 100, 23);
 	
 	panel.add(caln);
 	panel.add(un);
@@ -46,6 +49,11 @@ public class RemoveCalendar extends JFrame {
 	panel.add(Cancel);
 	
 	getContentPane().add(panel);
+	lblDeleteCalendar.setForeground(Color.ORANGE);
+	lblDeleteCalendar.setFont(new Font("Lucida Grande", Font.BOLD, 22));
+	lblDeleteCalendar.setBounds(193, 40, 180, 29);
+	
+	panel.add(lblDeleteCalendar);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
 	}

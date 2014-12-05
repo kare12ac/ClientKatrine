@@ -33,7 +33,7 @@ public class WeatherForcast extends JFrame{
 		header.setForeground(Color.ORANGE);
 		header.setFont(new Font("Lucida Grande", Font.BOLD, 22));
 		header.setBounds(164, 19, 219, 50);
-		btnexit.setBounds(224, 324, 105, 38);
+		btnexit.setBounds(203, 312, 105, 29);
 		
 		panel.add(Date);
 		panel.add(Celcius);

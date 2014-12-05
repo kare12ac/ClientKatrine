@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
 
 public class AddEvent extends JFrame{
 	JPanel panel = new JPanel();
@@ -44,29 +46,29 @@ public class AddEvent extends JFrame{
 	
 	
 	
-	eID.setBounds(100,50,100,50);
-	ty.setBounds(100,50,100,50);
-	loc.setBounds(100,50,100,50);
-	cre.setBounds(100,50,100,50);
-	start.setBounds(100,50,100,50);
-	end.setBounds(100,50,100,50);
-	nm.setBounds(100,50,100,50);
-	txt.setBounds(100,50,100,50);
-	custev.setBounds(100,50,100,50);
-	calID.setBounds(100,50,100,50);
+	eID.setBounds(6,138,100,28);
+	ty.setBounds(6,178,100,28);
+	loc.setBounds(6,218,100,22);
+	cre.setBounds(6,252,100,28);
+	start.setBounds(6,292,100,28);
+	end.setBounds(277,138,100,28);
+	nm.setBounds(277,181,100,22);
+	txt.setBounds(277,215,100,28);
+	custev.setBounds(277,252,100,28);
+	calID.setBounds(277,292,100,28);
 	
-	eIDtxt.setBounds(100,50,100,50);
-	tytxt.setBounds(100,50,100,50);
-	loctxt.setBounds(100,50,100,50);
-	cretxt.setBounds(100,50,100,50);
-	starttxt.setBounds(100,50,100,50);
-	endtxt.setBounds(100,50,100,50);
-	nmtxt.setBounds(100,50,100,50);
-	txttxt.setBounds(100,50,100,50);
-	custevtxt.setBounds(100,50,100,50);
-	calIDtxt.setBounds(100,50,100,50);
-	Add.setBounds(100,50,100,50);
-	Cancel.setBounds(100,50,100,50);
+	eIDtxt.setBounds(100,138,100,28);
+	tytxt.setBounds(100,178,100,28);
+	loctxt.setBounds(100,215,100,28);
+	cretxt.setBounds(100,252,100,28);
+	starttxt.setBounds(100,295,100,22);
+	endtxt.setBounds(389,138,100,28);
+	nmtxt.setBounds(389,181,100,22);
+	txttxt.setBounds(389,218,100,22);
+	custevtxt.setBounds(389,255,100,22);
+	calIDtxt.setBounds(389,295,100,22);
+	Add.setBounds(100,395,100,28);
+	Cancel.setBounds(277,395,100,28);
 	
 	
 	panel.add(eID);
@@ -95,6 +97,12 @@ public class AddEvent extends JFrame{
 	panel.add(Cancel);
 	
 	getContentPane().add(panel);
+	
+	JLabel lblNewEvent = new JLabel("New Event");
+	lblNewEvent.setForeground(Color.ORANGE);
+	lblNewEvent.setFont(new Font("Lucida Grande", Font.BOLD, 22));
+	lblNewEvent.setBounds(206, 42, 193, 30);
+	panel.add(lblNewEvent);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
 	}
@@ -113,5 +121,4 @@ public class AddEvent extends JFrame{
 		}
 		
 	}
-	
 }

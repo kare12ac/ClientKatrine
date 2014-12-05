@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
 
 public class RemoveNote extends JFrame{
 
@@ -21,6 +23,7 @@ public class RemoveNote extends JFrame{
 	
 	JButton DeleteN = new JButton("Delete Note");
 	JButton Cancel = new JButton("Cancel");
+	private final JLabel lblDeleteNote = new JLabel("Delete Note");
 	
 	public RemoveNote(){
 		super("Delete Note");
@@ -29,14 +32,14 @@ public class RemoveNote extends JFrame{
 		panel.setLayout(null);
 		
 		
-		nidtx.setBounds(100, 50, 100, 50);
-		poptx.setBounds(50, 100, 50, 100);
+		nidtx.setBounds(146, 125, 95, 28);
+		poptx.setBounds(146, 92, 95, 29);
 		
-		nid.setBounds(100,60,100,60);
-		pop.setBounds(50, 100, 50, 100);
+		nid.setBounds(6,128,100,22);
+		pop.setBounds(6, 92, 115, 28);
 		
-		DeleteN.setBounds(100, 50, 100, 50);
-		Cancel.setBounds(50, 100, 50, 100);
+		DeleteN.setBounds(84, 211, 100, 29);
+		Cancel.setBounds(230, 211, 95, 29);
 		
 	panel.add(nidtx);
 	panel.add(poptx);
@@ -46,6 +49,11 @@ public class RemoveNote extends JFrame{
 	panel.add(Cancel);
 	
 	getContentPane().add(panel);
+	lblDeleteNote.setForeground(Color.ORANGE);
+	lblDeleteNote.setFont(new Font("Lucida Grande", Font.BOLD, 22));
+	lblDeleteNote.setBounds(208, 35, 182, 28);
+	
+	panel.add(lblDeleteNote);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
 	}

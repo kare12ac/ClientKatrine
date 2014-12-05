@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
 
 public class AddNote extends JFrame {
 
@@ -27,6 +29,7 @@ public class AddNote extends JFrame {
 	
 	JButton AddN = new JButton("Add Note");
 	JButton Cancel = new JButton("Cancel");
+	private final JLabel lblNewNote = new JLabel("New Note");
 	
 	public AddNote(){
 		super("Add Note");
@@ -34,20 +37,20 @@ public class AddNote extends JFrame {
 		setLocation(500,290);
 		panel.setLayout(null);
 	
-	nID.setBounds(6,6,100,50);
-	nT.setBounds(6,50,100,50);
-	ncb.setBounds(248,6,100,50);
-	na.setBounds(258,50,100,50);
-	neID.setBounds(0,112,100,50);
+	nID.setBounds(6,139,100,22);
+	nT.setBounds(6,173,100,22);
+	ncb.setBounds(248,133,100,28);
+	na.setBounds(248,173,100,22);
+	neID.setBounds(6,207,100,28);
 	
-	nIDtxt.setBounds(120,17,100,28);
-	nTtxt.setBounds(120,61,100,28);
-	ncbtxt.setBounds(393,17,100,28);
-	natxt.setBounds(393,61,100,28);
-	neIDtxt.setBounds(120,123,100,28);
+	nIDtxt.setBounds(118,133,100,28);
+	nTtxt.setBounds(118,170,100,28);
+	ncbtxt.setBounds(393,133,100,28);
+	natxt.setBounds(393,170,100,28);
+	neIDtxt.setBounds(118,207,100,28);
 	
-	AddN.setBounds(21,257,121,40);
-	Cancel.setBounds(154,257,111,40);
+	AddN.setBounds(97,324,100,28);
+	Cancel.setBounds(284,324,100,28);
 	
 	panel.add(nID);
 	panel.add(nT);
@@ -65,6 +68,11 @@ public class AddNote extends JFrame {
 	panel.add(Cancel);
 	
 	getContentPane().add(panel);
+	lblNewNote.setForeground(Color.ORANGE);
+	lblNewNote.setFont(new Font("Lucida Grande", Font.BOLD, 22));
+	lblNewNote.setBounds(204, 39, 177, 34);
+	
+	panel.add(lblNewNote);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
 	}
