@@ -20,7 +20,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
- import JsonClasses.CreateCalender;
+
+import JsonClasses.CreateCalender;
+import JsonClasses.testing;
 
 	
 		 public class Calendar extends JFrame{
@@ -97,8 +99,8 @@ import javax.swing.JRadioButtonMenuItem;
 		delCalendar.addActionListener(new delCal_Action());
 		//delEvent.addActionListener(new delEvent_Action());
 		delNote.addActionListener(new delNote_Action());
-//		weather.addActionListener(new weather_Action());
-//		qoute.addActionListner(new qoute_Action());
+		weather.addActionListener(new weather_Action());
+		qoute.addActionListner(new quote_Action());
 //		impEvent.addActionListener(new impEvent_Action());
 //		impCalendar.addActionListner(new impCalendar_Action());
 		
@@ -333,18 +335,18 @@ import javax.swing.JRadioButtonMenuItem;
 			}
 		}
 			
-//			static class weather_Action implements ActionListener{
-//				public void actionPerformed(ActionEvent e){
-//				WeatherForcast weatherForcast = new WeatherForcast();
-//				weatherForcast.setVisible(true);
+			static class weather_Action implements ActionListener{
+				public void actionPerformed(ActionEvent e){
+				WeatherForcast weatherForcast = new WeatherForcast();
+				weatherForcast.setVisible(true);
 			
 			
-//				static class qoute_Action implements ActionListener{
-//			public void actionPerformed(ActionEvent e){
-//				Testing testing = new Testing();
-//				testing.setVisible(true);
-//			}
-//				}
+				static class quote_Action implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				Quote quote = new Quote();
+				quote.setVisible(true);
+			}
+				}
 //				
 //			static class imp_Action implements ActionListener{
 //				public void actionPerformed(ActionEvent e){
