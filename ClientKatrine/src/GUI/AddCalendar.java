@@ -19,6 +19,7 @@ import java.awt.font.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
 import Logic.TCPClient;
 public class AddCalendar extends JFrame {
 
@@ -88,15 +89,62 @@ public class AddCalendar extends JFrame {
 		createcalendar.setPublicOrPrivate(pubPriv);
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(createcalendar);
-		TCPClient connection = (TCPClient) new TCPClient();
-		
-//		try{
+		ServerConnection connection = new ServerConnection();
+		String CAL = "";
+		try{
+			CAL =connection.connectToServerAndSendReturnObject(jsonString);
+		}catch(JsonSyntaxException e1){
+			e1.printStackTrace();
+		}catch (IOException e1){
+			e1.printStackTrace();
+		}
+		if(CAL.equals("0")){
+			Calendar calendar = new Calendar();
+				calendar.setVisible(true);
+				dispose();
+
+			try{
 //			msg = connection.;(jsonString);
 //		}catch(JsonSyntaxException e1){
 //			e1.printStackTrace();
 //		}catch(IOException e1){
 //			e1.printStackTrace();
 //		}
+		
+		public void actionlogin(){
+			btnlogin.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent event){
+					String uname = txtUser.getText();
+					String pword = password.getText();
+					AuthUser login = new AuthUser();
+					login.setAuthUserEmail(uname);
+					login.setAuthUserPassword(pword);
+					login.setAuthUserIsAdmin(false);
+					Gson gson = new Gson();
+					String jsonString = gson.toJson(login);
+					ServerConnection connection = new ServerConnection();
+					String LoginAU =("");
+					try{
+						LoginAU =connection.connectToServerAndSendReturnObject(jsonString);
+					}catch(JsonSyntaxException e1){
+						e1.printStackTrace();
+					}catch (IOException e1){
+						e1.printStackTrace();
+					}
+					if(LoginAU.equals("0")){
+						Calendar calendar = new Calendar();
+							calendar.setVisible(true);
+							dispose();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		JOptionPane.showMessageDialog(null,msg);
 //		pubPriv.setText("");
