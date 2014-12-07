@@ -6,8 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import JsonClasses.AuthUser;
+import JsonClasses.createEvent;
+import Logic.ServerConnection;
+import Logic.TCPClient;
+
+import com.google.gson.Gson;
+
 import java.awt.Font;
 import java.awt.Color;
 
@@ -35,7 +44,7 @@ public class AddEvent extends JFrame{
 	JTextField custevtxt = new JTextField(30);
 	JTextField calIDtxt = new JTextField(30);
 	
-	JButton Add = new JButton("Add Event");
+	JButton btnAdd = new JButton("Add Event");
 	JButton Cancel = new JButton("Cancel");
 	
 	public AddEvent(){
@@ -67,7 +76,7 @@ public class AddEvent extends JFrame{
 	txttxt.setBounds(389,218,100,22);
 	custevtxt.setBounds(389,255,100,22);
 	calIDtxt.setBounds(389,295,100,22);
-	Add.setBounds(100,395,100,28);
+	btnAdd.setBounds(100,395,100,28);
 	Cancel.setBounds(277,395,100,28);
 	
 	
@@ -93,32 +102,96 @@ public class AddEvent extends JFrame{
 	panel.add(custevtxt);
 	panel.add(calIDtxt);
 	
-	panel.add(Add);
+	panel.add(btnAdd);
 	panel.add(Cancel);
 	
 	getContentPane().add(panel);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setVisible(true);
+	
 	
 	JLabel lblNewEvent = new JLabel("New Event");
 	lblNewEvent.setForeground(Color.ORANGE);
 	lblNewEvent.setFont(new Font("Lucida Grande", Font.BOLD, 22));
 	lblNewEvent.setBounds(206, 42, 193, 30);
 	panel.add(lblNewEvent);
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setVisible(true);
+	actionAE();
 	}
 	
-	public int closeOperation(){
-		setVisible(false);
-		return 1;
-	}
-	
-	public class ActionAddEvent implements ActionListener{
+	public void actionAE(){
+		btnAdd.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				TCPClient tc = new TCPClient();
+				String Eventinprogress = null;
+				String eID = eIDtxt.getText();
+				String ty= tytxt.getText();
+				String loc = loctxt.getText();
+				String cre = cretxt.getText();
+				String start= starttxt.getText();
+				String end = endtxt.getText();
+				String nm = nmtxt.getText();
+				String txt = txttxt.getText();
+				String custev = custevtxt.getText();
+				String calID = calIDtxt.getText();
+				
+				
+				createEvent eventcreated = new createEvent(calID, calID, calID, calID, calID, calID, calID, calID);
+				eventcreated.seteventid(eID);
+				eventcreated.settype(ty);
+				eventcreated.setlocation(loc);
+				eventcreated.setcreatedby(cre);
+				eventcreated.setstartTime(start);
+				eventcreated.setendTime(end);
+				eventcreated.setname(nm);
+				eventcreated.settext(txt);
+				eventcreated.setcustomevent(custev);
+				eventcreated.setCalenderID(calID);
+				
+				
+				
+				
+				
+				Gson gson = new Gson();
+				String jsonString = gson.toJson(eventcreated);
+				ServerConnection connection = new ServerConnection();
+				TCPClient client = new TCPClient();
+				
+//				LoginAU = connection.connectToServerAndSendReturnObject(jsonString);
+			
+					try {
+						Eventinprogress = tc.sendMessage(jsonString);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					 
+				if(Eventinprogress.equals("1")){
+System.out.println("naaede her til");
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
+					AddNote notew = new AddNote();
+					notew.setVisible(true);
+					dispose();
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "Wrong password, username or user is unactive");
+					eIDtxt.setText("");
+					tytxt.setText("");
+					loctxt.setText("");
+					cretxt.setText("");
+					starttxt.setText("");
+					endtxt.setText("");
+					nmtxt.setText("");
+					txttxt.setText("");
+					custevtxt.setText("");
+					calIDtxt.setText("");
+					eIDtxt.requestFocus();
+					
 			
 			
 		}
 		
+	}
+}
+	);
 	}
 }

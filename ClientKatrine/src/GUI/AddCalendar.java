@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import Logic.TCPClient;
+import Logic.TCPClient2;
 public class AddCalendar extends JFrame {
 
 	/**
@@ -78,66 +78,64 @@ public class AddCalendar extends JFrame {
 		return 1;
 	}
 	
-	
-	public class ActionAddCalendar implements ActionListener{
-	
-	public void actionPerformed(ActionEvent e){
-		String calName = txtUserName.getText();
-		int pubPriv = Integer.parseInt(txtpubPriv.getText());
-		CreateCalender createcalendar = new CreateCalender();
-		createcalendar.setCalenderName(calName);
-		createcalendar.setPublicOrPrivate(pubPriv);
-		Gson gson = new Gson();
-		String jsonString = gson.toJson(createcalendar);
-		ServerConnection connection = new ServerConnection();
-		String CAL = "";
-		try{
-			CAL =connection.connectToServerAndSendReturnObject(jsonString);
-		}catch(JsonSyntaxException e1){
-			e1.printStackTrace();
-		}catch (IOException e1){
-			e1.printStackTrace();
-		}
-		if(CAL.equals("0")){
-			Calendar calendar = new Calendar();
-				calendar.setVisible(true);
-				dispose();
-
-			try{
+}
+//	public class ActionAddCalendar implements ActionListener{
+//	
+//	public void actionPerformed(ActionEvent e){
+//		String calName = txtUserName.getText();
+//		int pubPriv = Integer.parseInt(txtpubPriv.getText());
+//		CreateCalender createcalendar = new CreateCalender();
+//		createcalendar.setCalenderName(calName);
+//		createcalendar.setPublicOrPrivate(pubPriv);
+//		Gson gson = new Gson();
+//		String jsonString = gson.toJson(createcalendar);
+//		ServerConnection connection = new ServerConnection();
+//		String CAL = "";
+//		try{
+//			CAL =connection.connectToServerAndSendReturnObject(jsonString);
+//		}catch(JsonSyntaxException e1){
+//			e1.printStackTrace();
+//		}catch (IOException e1){
+//			e1.printStackTrace();
+//		}
+//		if(CAL.equals("0")){
+//			Calendar calendar = new Calendar();
+//				calendar.setVisible(true);
+//				dispose();
+//
+//			try{
 //			msg = connection.;(jsonString);
 //		}catch(JsonSyntaxException e1){
 //			e1.printStackTrace();
 //		}catch(IOException e1){
 //			e1.printStackTrace();
 //		}
-		
-		public void actionlogin(){
-			btnlogin.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent event){
-					String uname = txtUser.getText();
-					String pword = password.getText();
-					AuthUser login = new AuthUser();
-					login.setAuthUserEmail(uname);
-					login.setAuthUserPassword(pword);
-					login.setAuthUserIsAdmin(false);
-					Gson gson = new Gson();
-					String jsonString = gson.toJson(login);
-					ServerConnection connection = new ServerConnection();
-					String LoginAU =("");
-					try{
-						LoginAU =connection.connectToServerAndSendReturnObject(jsonString);
-					}catch(JsonSyntaxException e1){
-						e1.printStackTrace();
-					}catch (IOException e1){
-						e1.printStackTrace();
-					}
-					if(LoginAU.equals("0")){
-						Calendar calendar = new Calendar();
-							calendar.setVisible(true);
-							dispose();
-		
-		
-		
+//		
+//		public void actionlogin(){
+//			btnlogin.addActionListener(new ActionListener(){
+//				public void actionPerformed(ActionEvent event){
+//					String uname = txtUserName.getText();
+//					String pword = password.getText();
+//					AuthUser login = new AuthUser();
+//					login.setAuthUserEmail(uname);
+//					login.setAuthUserPassword(pword);
+//					login.setAuthUserIsAdmin(false);
+//					Gson gson = new Gson();
+//					String jsonString = gson.toJson(login);
+//					ServerConnection connection = new ServerConnection();
+//					String LoginAU =("");
+//					try{
+//						LoginAU =connection.connectToServerAndSendReturnObject(jsonString);
+//					}catch(JsonSyntaxException e1){
+//						e1.printStackTrace();
+//					}catch (IOException e1){
+//						e1.printStackTrace();
+//					}
+//					if(LoginAU.equals("0")){
+//						Calendar calendar = new Calendar();
+//							calendar.setVisible(true);
+//							dispose();
+//		
 		
 		
 		
@@ -146,18 +144,20 @@ public class AddCalendar extends JFrame {
 		
 		
 		
-		JOptionPane.showMessageDialog(null,msg);
-//		pubPriv.setText("");
-//		pubPriv.requestFocus();
-	}
-	}
 		
-		public class ActionCancel implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				dispose();
-			}
-		}
-		
-}	
+//		
+//		JOptionPane.showMessageDialog(null,msg);
+////		pubPriv.setText("");
+////		pubPriv.requestFocus();
+//	}
+//	}
+//		
+//		public class ActionCancel implements ActionListener{
+//			public void actionPerformed(ActionEvent e){
+//				dispose();
+//			}
+//		}
+//		
+//}	
 
 

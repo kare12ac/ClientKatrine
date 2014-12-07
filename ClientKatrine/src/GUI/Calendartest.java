@@ -26,9 +26,15 @@ import JsonClasses.CreateCalender;
 //import JsonClasses.testing;
 
 	
-		 public class Calendar extends JFrame{
-//		 	public Calendar() {
-//		 	}
+		 public class Calendartest extends JFrame{
+		 	/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+
+			public Calendartest() {
+		 	}
 								
 		static JLabel lblDay,lblWeek; 
 		static JButton btnPreview, btnNext;

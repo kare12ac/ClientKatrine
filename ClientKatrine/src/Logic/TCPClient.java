@@ -1,41 +1,41 @@
 package Logic;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.ArrayList;
+ 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+ 
 import JsonClasses.*;
-
+ 
 public class TCPClient {
-	public static void main(String[] args) throws Exception {
-		String modifiedSentence;
-		Gson gson = new GsonBuilder().create();
-		
-		AuthUser A = new AuthUser();
-		A.setAuthUserEmail("admin@admin.dk");
-		A.setAuthUserIsAdmin(false);
-		A.setAuthUserPassword("d6YSr320JnLXlp8YYxUcNQ==");
-		String gsonString = gson.toJson(A);
-		System.out.println(A);
-		System.out.println(gsonString);
-
-		Socket clientSocket = new Socket("localhost", 8888);
-		DataOutputStream outToServer = new DataOutputStream(
-				clientSocket.getOutputStream());
-		byte[] input = gsonString.getBytes();
-		byte key = (byte) 3.1470;
-		byte[] encrypted = input;
-		for (int i = 0; i < encrypted.length; i++)
-			encrypted[i] = (byte) (encrypted[i] ^ key);
-
-		outToServer.write(encrypted);
-		outToServer.flush();
-		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(
-				clientSocket.getInputStream()));
-		modifiedSentence = inFromServer.readLine();
-		System.out.println(modifiedSentence);
-		System.out.println("FROM SERVER: " + modifiedSentence);
-		clientSocket.close();
-	}
+       
+        public String sendMessage(String gsonString) throws Exception {
+                encryption cryp = new encryption();
+                String stringToBeReturned = null;
+                String modifiedSentence;
+                Socket clientSocket = new Socket("localhost", 8888);
+                DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+               
+                byte[] encrypted = cryp.decrypt(gsonString.getBytes());
+                outToServer.write(encrypted);
+                System.out.println("FROM CLIENT:"+encrypted);
+                outToServer.flush();
+                BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                modifiedSentence = inFromServer.readLine();
+                System.out.println("SE HER FRA SERVER: "+modifiedSentence);
+                String TestingString = new String(modifiedSentence).trim();
+               
+                byte[] decrypted = cryp.decrypt(TestingString.getBytes());
+               
+                String decrypted2 = new String(decrypted).trim();
+                System.out.println("FROM SERVER: " + decrypted2);
+                clientSocket.close();
+                stringToBeReturned = decrypted2;
+               
+                return stringToBeReturned;
+        }
 }
