@@ -2,8 +2,8 @@ package JsonClasses;
 
 public class getCalendar implements java.io.Serializable {
 	private  final long serialVersionUID = 2L;
-	private String overallID = "getCalendar";
-	private String createdby;
+	private String overallID = "getCalender";
+	private String userName;
 	
 	public String getoverallID()
 	{
@@ -14,13 +14,13 @@ public class getCalendar implements java.io.Serializable {
 		this.overallID = overallID;
 	}
 	
-	public String getcreatedby()
+	public String getUserName()
 	{
-		return createdby;
+		return userName;
 	}
-	public void setcreatedby(String createdby)
+	public void setUserName(String userName)
 	{
-		this.createdby = createdby;
+		this.userName = userName;
 	}
 	
 }

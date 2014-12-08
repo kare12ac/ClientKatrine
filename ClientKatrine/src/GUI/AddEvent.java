@@ -173,7 +173,7 @@ System.out.println("naaede her til");
 					dispose();
 					
 				}else{
-					JOptionPane.showMessageDialog(null, "Wrong password, username or user is unactive");
+					JOptionPane.showMessageDialog(null, "Event was not added!");
 					eIDtxt.setText("");
 					tytxt.setText("");
 					loctxt.setText("");

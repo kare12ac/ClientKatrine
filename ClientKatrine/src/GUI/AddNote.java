@@ -6,13 +6,23 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
+import JsonClasses.CreateNote;
+import Logic.ServerConnection;
+import Logic.TCPClient;
+
 import java.awt.Font;
 import java.awt.Color;
+import java.io.IOException;
 
 public class AddNote extends JFrame {
-
+	String msg = "";
 	JPanel panel = new JPanel();
 	
 	JLabel nID = new JLabel("Note ID");
@@ -75,25 +85,76 @@ public class AddNote extends JFrame {
 	panel.add(lblNewNote);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
-	}
-	public int closeOperation(){
-		setVisible(false);
-		return 1;
+	actionAN();
 	}
 	
-	public class ActionAddNote implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+	
+	
+	public void actionAN (){
+		AddN.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent event){
 			
+				
+					TCPClient tc = new TCPClient();
+					String notemaking = null;
+					String nID = nIDtxt.getText();
+					String nT = nTtxt.getText();
+					String nc= ncbtxt.getText();
+					String neID = neIDtxt.getText();
+					
+					CreateNote notecreated = new CreateNote(nID, nT, nc, neID);
+					notecreated.setNoteId(nID);
+					notecreated.setNoteText(nT);
+					notecreated.setNoteCreatedBy(nc);
+					notecreated.seteventid(neID);
+					
+					
+					Gson gson = new Gson();
+					String jsonString = gson.toJson(notecreated);
+					ServerConnection connection = new ServerConnection();
+					TCPClient client = new TCPClient();
+					
+					
+					// HER LIGGER DET EN FEIL!!!
+					try{
+						msg= connection.connectToServerAndSendReturnObject(jsonString);
+					}catch (JsonSyntaxException e1){
+						e1.printStackTrace();
+					}catch(IOException e1){
+						e1.printStackTrace();
+						//System.out.println("heiheihei123");
+				}
+			
+//					if(notemaking.equals("1")){
+//						System.out.println("så langt kom vi denne gang!");
+//						
+//						Login login = new Login();
+//						login.setVisible(true);
+//						dispose();
+						
+					
+							JOptionPane.showMessageDialog(null,msg);
+							nIDtxt.setText("");
+							nTtxt.setText("");
+							ncbtxt.setText("");
+							neIDtxt.setText("");
+							nIDtxt.requestFocus();
+						
+							
 		}
+		}
+			
+	);
+	}
+}
+				
+
+
+
+	
+
+	
+	
 		
 	
-	
-	
-	
-	
-	
-}
-}
+

@@ -11,12 +11,18 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
+import JsonClasses.CalendarInfo;
 import JsonClasses.getCalendar;
 import Logic.ServerConnection;
 import Logic.TCPClient;
+
 import java.awt.Font;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class ImportCalendar extends JFrame{
 
@@ -64,23 +70,59 @@ public class ImportCalendar extends JFrame{
 			public void actionPerformed(ActionEvent event){
 				TCPClient tc = new TCPClient();
 				String importCBS = null;
-//				String Test1 = "test;"
+				
 
 				getCalendar getget = new getCalendar();
+				getget.setUserName("1");
 				Gson gson = new Gson();
 				String jsonString = gson.toJson(getget);
+				
+				System.err.println(getget.getUserName());
 				ServerConnection connection = new ServerConnection();
 				TCPClient client = new TCPClient();
-
-				
+				CalendarInfo returncalendarinfo = null;
 				try{
+					
 				importCBS = tc.sendMessage(jsonString);
+				
+				
+				JsonParser parser = new JsonParser();
+				System.err.println("Parsed from: " + jsonString);
+				JsonArray ja = parser.parse(importCBS).getAsJsonArray();
+				
+				
+				ArrayList<CalendarInfo> cal = new ArrayList<CalendarInfo>();
+				
+				
+				System.err.println("SIZE: " + ja.size());
+				for(JsonElement obj : ja )
+			    {
+					System.err.println(obj);
+			        CalendarInfo finalcal = gson.fromJson( obj , CalendarInfo.class);
+			        cal.add(finalcal);
+			    }
+				
+				//returncalendarinfo = (CalendarInfo)gson.fromJson(importCBS, CalendarInfo.class);
+				
+//				System.out.println(cal.get(1));
+				
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
+					System.out.println("Error123");
 					e.printStackTrace();
 				}
-				 
-			if(importCBS.equals("1")){
+				
+//				System.out.println(returncalendarinfo.getCalenderName());
+//				System.out.println("returnert!");
+				
+				
+		//		String replyfromserver = gson.fromJson(importCBS, CalendarInfo.class);
+				
+			
+				
+				
+//			if(importCBS.equals("1")){
+				if(true){
 System.out.println("naaede her til");
 
 				AddEvent event123 = new AddEvent();

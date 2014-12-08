@@ -30,7 +30,7 @@ public class TCPClient {
                 String TestingString = new String(modifiedSentence).trim();
                
                 byte[] decrypted = cryp.decrypt(TestingString.getBytes());
-               
+                System.err.println("Decrypted: " + new String(decrypted));
                 String decrypted2 = new String(decrypted).trim();
                 System.out.println("FROM SERVER: " + decrypted2);
                 clientSocket.close();

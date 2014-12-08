@@ -47,7 +47,7 @@ public class ServerConnection {
 			System.out.println("Slik at det bli slik: " + jsonOut);
 		
 			System.out.println("Siden det må sendes i bytes så gjøres det om til bytes ");
-			//byteArrayOut = jsonOut.getBytes();
+			byteArrayOut = jsonOut.getBytes();
 			TCPClient tc = new TCPClient();
 			//tc.sendMessage(gsonString);
 			

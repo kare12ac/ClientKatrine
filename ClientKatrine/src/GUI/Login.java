@@ -78,7 +78,12 @@ public class Login  extends JFrame{
 				ServerConnection connection = new ServerConnection();
 				TCPClient client = new TCPClient();
 				
-//				LoginAU = connection.connectToServerAndSendReturnObject(jsonString);
+				try {
+					LoginAU = connection.connectToServerAndSendReturnObject(jsonString);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			
 					try {
 						LoginAU = tc.sendMessage(jsonString);
@@ -90,7 +95,7 @@ public class Login  extends JFrame{
 				if(LoginAU.equals("0")){
 System.out.println("naaede her til");
 
-					ImportCalendar calget = new ImportCalendar();
+					AddNote calget = new AddNote();
 					calget.setVisible(true);
 					dispose();
 					
