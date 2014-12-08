@@ -67,6 +67,7 @@ public class ImportCalendar extends JFrame{
 	
 	public void calendarImp(){
 		btnImport.addActionListener(new ActionListener(){
+			@SuppressWarnings("null")
 			public void actionPerformed(ActionEvent event){
 				TCPClient tc = new TCPClient();
 				String importCBS = null;
@@ -112,11 +113,11 @@ public class ImportCalendar extends JFrame{
 					e.printStackTrace();
 				}
 				
-//				System.out.println(returncalendarinfo.getCalenderName());
-//				System.out.println("returnert!");
+				System.out.println(returncalendarinfo.getCalenderName());
+				System.out.println("returnert!");
 				
 				
-		//		String replyfromserver = gson.fromJson(importCBS, CalendarInfo.class);
+			//	String replyfromserver = gson.fromJson(importCBS, CalendarInfo.class);
 				
 			
 				

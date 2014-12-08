@@ -59,7 +59,7 @@ import JsonClasses.CreateCalender;
 		
 		
 		//Create controls 
-		//frmMain = new JFrame("Calendar application");
+		frmMain = new JFrame("Calendar application");
 		lblDay = new JLabel("Monday");
 		lblWeek = new JLabel("1");
 		btnPreview = new JButton("<<");
@@ -170,18 +170,7 @@ import JsonClasses.CreateCalender;
 		for(int i = 0; i<7; i++){
 			mtblCalendar.addColumn(headersM[i]);
 		}
-//		
-		
-//		String[] headersW = {"Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","saturday"};
-//		
-//		for(int w = 0; w<7; w++){
-//			mtblCalendar.addColumn(headersW[w]);
-//		}
-		
-//String[] headersD = {"Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","saturday"};
-//		
-//		for(int d = 0; d<7; d++){
-//			dtblCalendar.addColumn(headersD[d]);
+
 		
 			//set background
 		
@@ -205,7 +194,7 @@ import JsonClasses.CreateCalender;
 		// set row/column count 
 		tblCalendar.setRowHeight(38);
 		mtblCalendar.setColumnCount(7);
-		mtblCalendar.setRowCount(6);
+		//mtblCalendar.setRowCount(6);
 		
 		
 			//refresh calendar 
@@ -215,7 +204,7 @@ import JsonClasses.CreateCalender;
 			//variables
 			//String[] months = {"January","February","March","April","May","June","July","August","September","October","November","December"};
 			//String[] days = {"Monday","Tuesday","Wednesday","Thursday", "Friday","Saturday","Sunday"};
-			String[] weeks = {"1","2","3","4","5"};
+			//String[] weeks = {"1","2","3","4","5"};
 			int nod,som;//number of days, start of month
 		
 		tblCalendar.setDefaultRenderer(tblCalendar.getColumnClass(0), new tblCalendarRenderer());
@@ -223,11 +212,11 @@ import JsonClasses.CreateCalender;
 		// prepare buttons
 		btnPreview.setEnabled(true); //enable buttons at first
 		btnNext.setEnabled(true);
-		if(week ==0&& day <= realDay-10){btnPreview.setEnabled(false);}//too early
-		if(week ==11&& day>= realDay+100){btnNext.setEnabled(false);}//too late 
-		lblWeek.setText(weeks[week]);//refresh the month label(at the top)
-		lblWeek.setBounds(160-lblWeek.getPreferredSize().width/2,25,180,25);// re-allign label with calendar)
-		
+//		if(week ==0&& day <= realDay-10){btnPreview.setEnabled(false);}//too early
+//		if(week ==11&& day>= realDay+100){btnNext.setEnabled(false);}//too late 
+//		lblWeek.setText(weeks[week]);//refresh the month label(at the top)
+//		lblWeek.setBounds(160-lblWeek.getPreferredSize().width/2,25,180,25);// re-allign label with calendar)
+//		
 		//clear table
 		for(int i=0; i<6; i++){
 			for(int j = 0; j<7; j++){
@@ -237,7 +226,7 @@ import JsonClasses.CreateCalender;
 			
 
 		GregorianCalendar cal = new GregorianCalendar(day,week,1);
-		nod = cal.getActualMaximum(GregorianCalendar.DAY_OF_WEEK);
+		nod = cal.getActualMaximum(GregorianCalendar.WEEK_OF_MONTH);
 		som = cal.get(GregorianCalendar.DAY_OF_WEEK);
 		
 		// draw calendar 

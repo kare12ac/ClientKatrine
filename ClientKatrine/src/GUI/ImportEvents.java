@@ -22,6 +22,10 @@ import Logic.TCPClient;
 import Logic.EncryptUserID;
 public class ImportEvents extends JFrame {
 
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 JPanel panel = new JPanel();
 JButton btnImport = new JButton("Import Events");
 JButton btnCancel = new JButton("Cancel");
@@ -47,17 +51,17 @@ public ImportEvents(){
 	panel.add(lblImport);
 
 	getContentPane().add(panel);
-//	String[] test = {""};
-//	Object[][] data=
-//		{
-//			{"events"},{"data"}{json}
-//		};
+	String[] test = {""};
+	Object[][] data=
+		{
+			{"events"},{"data"}
+		};
 	
-//	JTable dataTable = new JTable(data, test);
-//	dataTable.setBounds(63, 91, 444, 184);
-//	panel.add(dataTable);
-//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	setVisible(true);
+	JTable dataTable = new JTable(data, test);
+	dataTable.setBounds(63, 91, 444, 184);
+	panel.add(dataTable);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setVisible(true);
 	impEvents();
 	
 }
@@ -80,11 +84,7 @@ public  void impEvents(){
 			ServerConnection connection = new ServerConnection();
 			TCPClient client = new TCPClient();
 			
-			JTable dataTable = new JTable(data, test);
-			dataTable.setBounds(63, 91, 444, 184);
-			panel.add(dataTable);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setVisible(true);
+			
 			
 		EncryptUserID e = new EncryptUserID();
 		String userID = "anha13ao";
@@ -98,16 +98,21 @@ public  void impEvents(){
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-        System.out.println("hej" +json);
+		
+		String[] print= {""};
+		{
+		} 
+		
+        System.out.println("hei på deg " +json);
 		}
 		String[] test = {""};
 		Object[][] data=
 		String jsonString = gson.toJson(ge);
 			
 			{
-				{"events"},{"data"},{(json)}
+				{jsonString}
 			};
-        
+       
 		
 		
 		

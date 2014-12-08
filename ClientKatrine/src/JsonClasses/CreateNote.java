@@ -18,6 +18,10 @@ public class CreateNote implements java.io.Serializable
 		this.eventid = eventid;
 	}
 	
+	public CreateNote() {
+		// TODO Auto-generated constructor stub
+	}
+
 	//Getters and setters 
 	public String getOverallID() {
 		return overallID;

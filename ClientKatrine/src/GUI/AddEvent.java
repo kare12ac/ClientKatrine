@@ -123,7 +123,6 @@ public class AddEvent extends JFrame{
 			public void actionPerformed(ActionEvent event){
 				TCPClient tc = new TCPClient();
 				String Eventinprogress = null;
-				String eID = eIDtxt.getText();
 				String ty= tytxt.getText();
 				String loc = loctxt.getText();
 				String cre = cretxt.getText();
@@ -135,8 +134,8 @@ public class AddEvent extends JFrame{
 				String calID = calIDtxt.getText();
 				
 				
-				createEvent eventcreated = new createEvent(calID, calID, calID, calID, calID, calID, calID, calID);
-				eventcreated.seteventid(eID);
+				createEvent eventcreated = new createEvent();
+				
 				eventcreated.settype(ty);
 				eventcreated.setlocation(loc);
 				eventcreated.setcreatedby(cre);
@@ -160,6 +159,7 @@ public class AddEvent extends JFrame{
 			
 					try {
 						Eventinprogress = tc.sendMessage(jsonString);
+						System.out.println(jsonString);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

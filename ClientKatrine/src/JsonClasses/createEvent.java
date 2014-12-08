@@ -3,7 +3,6 @@ package JsonClasses;
 public class createEvent implements java.io.Serializable {
 	private  final long serialVersionUID = 2L;
 	private String overallID = "createEvent";
-	private String eventid;
 	private String type;
 	private String location;
 	private String createdby;
@@ -14,18 +13,12 @@ public class createEvent implements java.io.Serializable {
 	private String customevent;
 	private String CalenderID;
 	
-	public createEvent(String eventid, String type, String location, String createdby, String startTime, String endTime, String name, String text) {
-		
-		this.eventid = eventid;
-		this.type = type;
-		this.location = location;
-		this.createdby = createdby;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.name = name;
-		this.text = text;
-	}
+
 	
+	
+	public createEvent() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getoverallID()
 	{
 		return overallID;
@@ -35,15 +28,7 @@ public class createEvent implements java.io.Serializable {
 		this.overallID = overallID;
 	}
 	
-	public String geteventid()
-	{
-		return eventid;
-	}
-	public void seteventid(String eventid)
-	{
-		this.eventid = eventid;
-	}
-	
+
 	public String gettype()
 	{
 		return type;

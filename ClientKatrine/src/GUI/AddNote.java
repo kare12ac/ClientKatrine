@@ -102,7 +102,7 @@ public class AddNote extends JFrame {
 					String nc= ncbtxt.getText();
 					String neID = neIDtxt.getText();
 					
-					CreateNote notecreated = new CreateNote(nID, nT, nc, neID);
+					CreateNote notecreated = new CreateNote();
 					notecreated.setNoteId(nID);
 					notecreated.setNoteText(nT);
 					notecreated.setNoteCreatedBy(nc);
@@ -117,29 +117,29 @@ public class AddNote extends JFrame {
 					
 					// HER LIGGER DET EN FEIL!!!
 					try{
-						msg= connection.connectToServerAndSendReturnObject(jsonString);
-					}catch (JsonSyntaxException e1){
-						e1.printStackTrace();
-					}catch(IOException e1){
-						e1.printStackTrace();
-						//System.out.println("heiheihei123");
+						notemaking= tc.sendMessage(jsonString);
+						System.out.println("jsonString");
+
+					}catch (Exception e){
+						e.printStackTrace();
+					
 				}
 			
-//					if(notemaking.equals("1")){
-//						System.out.println("så langt kom vi denne gang!");
-//						
-//						Login login = new Login();
-//						login.setVisible(true);
-//						dispose();
+				if(notemaking.equals("1")){
+						System.out.println("så langt kom vi denne gang!");
+						
+						Login login = new Login();
+						login.setVisible(true);
+						dispose();
 						
 					
-							JOptionPane.showMessageDialog(null,msg);
+							JOptionPane.showMessageDialog(null,"Note was not added");
 							nIDtxt.setText("");
 							nTtxt.setText("");
 							ncbtxt.setText("");
 							neIDtxt.setText("");
 							nIDtxt.requestFocus();
-						
+				}				
 							
 		}
 		}
