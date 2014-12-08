@@ -12,7 +12,7 @@ public class encryption {
                 }
  
                 byte[] encrypted = b;
- 
+                System.out.println(encrypted);
                 return encrypted;
         }
  

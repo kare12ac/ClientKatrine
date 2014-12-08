@@ -1,5 +1,7 @@
 package JsonClasses;
 
+import java.util.ArrayList;
+
 public class createEvent implements java.io.Serializable {
 	private  final long serialVersionUID = 2L;
 	private String overallID = "createEvent";
@@ -117,6 +119,15 @@ public class createEvent implements java.io.Serializable {
 	public void setCalenderID(String CalenderID)
 	{
 		this.CalenderID = CalenderID;
+	}
+	private ArrayList<ArrayList<createEvent>> events123;
+	
+	
+	public ArrayList<ArrayList<createEvent>> getEvent() {
+	return events123;
+	}
+	public void setCalendars(ArrayList<ArrayList<createEvent>> calendars) {
+	this.events123 = events123;
 	}
 	
 

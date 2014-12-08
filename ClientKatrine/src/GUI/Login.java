@@ -95,7 +95,7 @@ public class Login  extends JFrame{
 				if(LoginAU.equals("0")){
 System.out.println("naaede her til");
 
-					AddEvent calget = new AddEvent();
+					ImportEvents calget = new ImportEvents();
 					calget.setVisible(true);
 					dispose();
 					

@@ -25,13 +25,12 @@ public class AddNote extends JFrame {
 	String msg = "";
 	JPanel panel = new JPanel();
 	
-	JLabel nID = new JLabel("Note ID");
+	
 	JLabel nT = new JLabel("Note Text");
 	JLabel ncb = new JLabel("Note Created By");
 	JLabel na = new JLabel ("Note Activity");
 	JLabel neID = new JLabel("Note Event ID");
 	
-	JTextField nIDtxt = new JTextField(30);
 	JTextField nTtxt = new JTextField(30);
 	JTextField ncbtxt = new JTextField(30);
 	JTextField natxt = new JTextField(30);
@@ -47,13 +46,13 @@ public class AddNote extends JFrame {
 		setLocation(500,290);
 		panel.setLayout(null);
 	
-	nID.setBounds(6,139,100,22);
+	
 	nT.setBounds(6,173,100,22);
 	ncb.setBounds(248,133,100,28);
 	na.setBounds(248,173,100,22);
 	neID.setBounds(6,207,100,28);
 	
-	nIDtxt.setBounds(118,133,100,28);
+	
 	nTtxt.setBounds(118,170,100,28);
 	ncbtxt.setBounds(393,133,100,28);
 	natxt.setBounds(393,170,100,28);
@@ -62,13 +61,13 @@ public class AddNote extends JFrame {
 	AddN.setBounds(97,324,100,28);
 	Cancel.setBounds(284,324,100,28);
 	
-	panel.add(nID);
+	
 	panel.add(nT);
 	panel.add(ncb);
 	panel.add(na);
 	panel.add(neID);
 	
-	panel.add(nIDtxt);
+	
 	panel.add(nTtxt);
 	panel.add(ncbtxt);
 	panel.add(natxt);
@@ -97,13 +96,11 @@ public class AddNote extends JFrame {
 				
 					TCPClient tc = new TCPClient();
 					String notemaking = null;
-					String nID = nIDtxt.getText();
 					String nT = nTtxt.getText();
 					String nc= ncbtxt.getText();
 					String neID = neIDtxt.getText();
 					
 					CreateNote notecreated = new CreateNote();
-					notecreated.setNoteId(nID);
 					notecreated.setNoteText(nT);
 					notecreated.setNoteCreatedBy(nc);
 					notecreated.seteventid(neID);
@@ -124,7 +121,7 @@ public class AddNote extends JFrame {
 						e.printStackTrace();
 					
 				}
-			
+					System.out.println("før if statement");
 				if(notemaking.equals("1")){
 						System.out.println("så langt kom vi denne gang!");
 						
@@ -132,13 +129,14 @@ public class AddNote extends JFrame {
 						login.setVisible(true);
 						dispose();
 						
+						System.out.println("kommer gjennom if statement");
 					
 							JOptionPane.showMessageDialog(null,"Note was not added");
-							nIDtxt.setText("");
+							
 							nTtxt.setText("");
 							ncbtxt.setText("");
 							neIDtxt.setText("");
-							nIDtxt.requestFocus();
+							neIDtxt.requestFocus();
 				}				
 							
 		}
