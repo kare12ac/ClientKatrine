@@ -30,11 +30,13 @@ public class AddNote extends JFrame {
 	JLabel ncb = new JLabel("Note Created By");
 	JLabel na = new JLabel ("Note Activity");
 	JLabel neID = new JLabel("Note Event ID");
+	JLabel active = new JLabel("Active user");
 	
 	JTextField nTtxt = new JTextField(30);
 	JTextField ncbtxt = new JTextField(30);
 	JTextField natxt = new JTextField(30);
 	JTextField neIDtxt = new JTextField(30);
+	JTextField activetxt = new JTextField(30);
 	
 	JButton AddN = new JButton("Add Note");
 	JButton Cancel = new JButton("Cancel");
@@ -47,17 +49,18 @@ public class AddNote extends JFrame {
 		panel.setLayout(null);
 	
 	
-	nT.setBounds(6,173,100,22);
+	nT.setBounds(6,133,100,22);
 	ncb.setBounds(248,133,100,28);
 	na.setBounds(248,173,100,22);
 	neID.setBounds(6,207,100,28);
+	active.setBounds(6,173,100,22);
 	
-	
-	nTtxt.setBounds(118,170,100,28);
+	nTtxt.setBounds(118,133,100,28);
 	ncbtxt.setBounds(393,133,100,28);
 	natxt.setBounds(393,170,100,28);
 	neIDtxt.setBounds(118,207,100,28);
-	
+	activetxt.setBounds(118,170,100,28);
+
 	AddN.setBounds(97,324,100,28);
 	Cancel.setBounds(284,324,100,28);
 	
@@ -66,12 +69,13 @@ public class AddNote extends JFrame {
 	panel.add(ncb);
 	panel.add(na);
 	panel.add(neID);
-	
+	panel.add(active);
 	
 	panel.add(nTtxt);
 	panel.add(ncbtxt);
 	panel.add(natxt);
 	panel.add(neIDtxt);
+	panel.add(activetxt);
 	
 	panel.add(AddN);
 	panel.add(Cancel);
@@ -99,15 +103,18 @@ public class AddNote extends JFrame {
 					String nT = nTtxt.getText();
 					String nc= ncbtxt.getText();
 					String neID = neIDtxt.getText();
+					String active = activetxt.getText();
 					
 					CreateNote notecreated = new CreateNote();
 					notecreated.setNoteText(nT);
 					notecreated.setNoteCreatedBy(nc);
 					notecreated.seteventid(neID);
-					
+					notecreated.setNoteActive(active);
 					
 					Gson gson = new Gson();
 					String jsonString = gson.toJson(notecreated);
+					
+					System.out.println(jsonString);
 					ServerConnection connection = new ServerConnection();
 					TCPClient client = new TCPClient();
 					
@@ -115,7 +122,7 @@ public class AddNote extends JFrame {
 					// HER LIGGER DET EN FEIL!!!
 					try{
 						notemaking= tc.sendMessage(jsonString);
-						System.out.println("jsonString");
+						System.out.println(jsonString);
 
 					}catch (Exception e){
 						e.printStackTrace();
@@ -130,7 +137,7 @@ public class AddNote extends JFrame {
 						dispose();
 						
 						System.out.println("kommer gjennom if statement");
-					
+				}else{
 							JOptionPane.showMessageDialog(null,"Note was not added");
 							
 							nTtxt.setText("");
@@ -138,14 +145,14 @@ public class AddNote extends JFrame {
 							neIDtxt.setText("");
 							neIDtxt.requestFocus();
 				}				
-							
+		}		
 		}
+		);
 		}
-			
-	);
-	}
-}
+}		
+	
 				
+
 
 
 

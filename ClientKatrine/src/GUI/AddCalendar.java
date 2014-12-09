@@ -9,6 +9,7 @@ import com.google.gson.*;
 import javax.swing.*;
 
 import Logic.ServerConnection;
+import Logic.TCPClient;
 import JsonClasses.CreateCalender;
 import JsonClasses.AuthUser;
 
@@ -71,93 +72,59 @@ public class AddCalendar extends JFrame {
 	getContentPane().add(panel);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
+	actionAC();
+	
+	
 	
 	}
-	public int closeOperation(){
-		setVisible(false);
-		return 1;
-	}
 	
+
+	public void actionAC(){
+	
+	btnCreate.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent event){
+		TCPClient tc = new TCPClient();	
+		String makinganewcalendar = null;
+		String uname = txtUserName.getText();
+		String cal = txtCalName.getText();
+		int pubPriv = Integer.parseInt(txtpubPriv.getText());
+		CreateCalender createcalendar = new CreateCalender();
+		createcalendar.setCalenderName(cal);
+		createcalendar.setPublicOrPrivate(pubPriv);
+		createcalendar.setUserName(uname);
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(createcalendar);
+		ServerConnection connection = new ServerConnection();
+		
+		try{
+			makinganewcalendar =connection.connectToServerAndSendReturnObject(jsonString);
+		}catch(Exception e){
+			e.printStackTrace();
+		
+		}
+		if(makinganewcalendar.equals("1")){
+			Calendar calendar = new Calendar();
+				calendar.setVisible(true);
+				dispose();
+
+		}else{
+		JOptionPane.showMessageDialog(null,"Calendar was not added!");
+		txtUserName.setText("");
+		txtCalName.setText("");
+		txtpubPriv.setText("");
+		txtUserName.requestFocus();
+	
+		}
+		}
+
+		
+	
+			
+		
+		}
+		);
+	
+	}
+
 }
-//	public class ActionAddCalendar implements ActionListener{
-//	
-//	public void actionPerformed(ActionEvent e){
-//		String calName = txtUserName.getText();
-//		int pubPriv = Integer.parseInt(txtpubPriv.getText());
-//		CreateCalender createcalendar = new CreateCalender();
-//		createcalendar.setCalenderName(calName);
-//		createcalendar.setPublicOrPrivate(pubPriv);
-//		Gson gson = new Gson();
-//		String jsonString = gson.toJson(createcalendar);
-//		ServerConnection connection = new ServerConnection();
-//		String CAL = "";
-//		try{
-//			CAL =connection.connectToServerAndSendReturnObject(jsonString);
-//		}catch(JsonSyntaxException e1){
-//			e1.printStackTrace();
-//		}catch (IOException e1){
-//			e1.printStackTrace();
-//		}
-//		if(CAL.equals("0")){
-//			Calendar calendar = new Calendar();
-//				calendar.setVisible(true);
-//				dispose();
-//
-//			try{
-//			msg = connection.;(jsonString);
-//		}catch(JsonSyntaxException e1){
-//			e1.printStackTrace();
-//		}catch(IOException e1){
-//			e1.printStackTrace();
-//		}
-//		
-//		public void actionlogin(){
-//			btnlogin.addActionListener(new ActionListener(){
-//				public void actionPerformed(ActionEvent event){
-//					String uname = txtUserName.getText();
-//					String pword = password.getText();
-//					AuthUser login = new AuthUser();
-//					login.setAuthUserEmail(uname);
-//					login.setAuthUserPassword(pword);
-//					login.setAuthUserIsAdmin(false);
-//					Gson gson = new Gson();
-//					String jsonString = gson.toJson(login);
-//					ServerConnection connection = new ServerConnection();
-//					String LoginAU =("");
-//					try{
-//						LoginAU =connection.connectToServerAndSendReturnObject(jsonString);
-//					}catch(JsonSyntaxException e1){
-//						e1.printStackTrace();
-//					}catch (IOException e1){
-//						e1.printStackTrace();
-//					}
-//					if(LoginAU.equals("0")){
-//						Calendar calendar = new Calendar();
-//							calendar.setVisible(true);
-//							dispose();
-//		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		
-//		JOptionPane.showMessageDialog(null,msg);
-////		pubPriv.setText("");
-////		pubPriv.requestFocus();
-//	}
-//	}
-//		
-//		public class ActionCancel implements ActionListener{
-//			public void actionPerformed(ActionEvent e){
-//				dispose();
-//			}
-//		}
-//		
-//}	
-
-
+	
