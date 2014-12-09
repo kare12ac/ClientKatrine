@@ -12,7 +12,7 @@ import JsonClasses.AuthUser;
 import JsonClasses.getCalendar;
 import Logic.ServerConnection;
 import Logic.TCPClient;
-import Logic.TCPClient2;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -95,7 +95,7 @@ public class Login  extends JFrame{
 				if(LoginAU.equals("0")){
 System.out.println("naaede her til");
 
-					Calendar calget = new Calendar();
+					ImportEvents calget = new ImportEvents();
 					calget.setVisible(true);
 					dispose();
 					

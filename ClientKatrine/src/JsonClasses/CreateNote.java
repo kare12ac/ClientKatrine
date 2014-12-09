@@ -10,12 +10,14 @@ public class CreateNote implements java.io.Serializable
 	private String noteActive;
 	private String eventid;
 	
-	public CreateNote(String noteId, String noteText, String noteCreatedBy, String noteEventID, String eventid) {
+	
+	public CreateNote(String noteId, String noteText, String noteCreatedBy, String noteEventID, String eventid, String noteActive) {
 		
 		this.noteId = noteId;
 		this.noteText = noteText;
 		this.noteCreatedBy = noteCreatedBy;
 		this.eventid = eventid;
+		this.noteActive = noteActive;
 	}
 	
 	public CreateNote() {

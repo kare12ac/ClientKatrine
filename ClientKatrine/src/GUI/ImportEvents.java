@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import JsonClasses.createEvent;
@@ -32,9 +33,13 @@ import com.google.gson.Gson;
 import JsonClasses.createEvent;
 import Logic.ServerConnection;
 import Logic.TCPClient;
+
 import javax.swing.JTextArea;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JScrollBar;
 
 public class ImportEvents extends JFrame {
 
@@ -44,6 +49,7 @@ public class ImportEvents extends JFrame {
 	JButton btnImport = new JButton("Import Events");
 	JButton btnCancel = new JButton("Cancel");
 	JLabel lblImport = new JLabel("Imported Events");
+	private final JScrollPane scrollPane_1 = new JScrollPane();
 	private JTable impev;
 
 
@@ -55,27 +61,28 @@ public class ImportEvents extends JFrame {
 		lblImport.setFont(new Font("Lucida Grande", Font.BOLD,22));
 		panel.setLayout(null);
 
-		btnImport.setBounds(384, 33, 145, 29);
+		btnImport.setBounds(73, 493, 145, 29);
 
 		panel.add(btnImport);
-		btnCancel.setBounds(429, 67, 100, 24);
+		
+		btnCancel.setBounds(282, 495, 100, 24);
 		panel.add(btnCancel);
 		panel.add(lblImport);
-
-		getContentPane().add(panel);
-		String[] test = {""};
-		Object[][] data=
-			{
-				{"events"},{"data"}
-			};
-
-		JTable dataTable = new JTable(data, test);
-		dataTable.setBounds(63, 91, 444, 52);
-		panel.add(dataTable);
-
+		
 		JTextArea calendarTextArea = new JTextArea();
-		calendarTextArea.setBounds(63, 167, 444, 166);
+		calendarTextArea.setBounds(63, 167, 444, 319);
 		panel.add(calendarTextArea);
+		
+		getContentPane().add(panel);
+		scrollPane_1.setBounds(31, 80, 334, 283);
+		panel.add(scrollPane_1);
+		scrollPane_1.setViewportView(calendarTextArea);
+		
+		calendarTextArea.setEditable(false);
+
+	
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		actionEvents();
@@ -176,12 +183,20 @@ public class ImportEvents extends JFrame {
 
 
 		}
+	
+				
 				);
+	
+		btnCancel.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				Calendar cal = new Calendar();
+	
+	
 	}
 }		       
-
-
-
+);
+	}	
+}
 
 
 

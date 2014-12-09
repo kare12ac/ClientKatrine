@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import Logic.TCPClient2;
+
 public class AddCalendar extends JFrame {
 
 	/**
@@ -108,7 +108,7 @@ public class AddCalendar extends JFrame {
 				dispose();
 
 		}else{
-		JOptionPane.showMessageDialog(null,"Calendar was not added!");
+		JOptionPane.showMessageDialog(null,"Calendar was not saved to the database");
 		txtUserName.setText("");
 		txtCalName.setText("");
 		txtpubPriv.setText("");

@@ -22,7 +22,6 @@ import java.awt.Color;
 
 public class AddEvent extends JFrame{
 	JPanel panel = new JPanel();
-	JLabel eID = new JLabel("Event ID");
 	JLabel ty = new JLabel("Type");
 	JLabel loc = new JLabel("Location");
 	JLabel cre = new JLabel("Created by");
@@ -30,10 +29,10 @@ public class AddEvent extends JFrame{
 	JLabel end = new JLabel ("End time");
 	JLabel nm = new JLabel("Name");
 	JLabel txt = new JLabel ("Text");
-	JLabel custev = new JLabel ("Customer event");
+	JLabel custev = new JLabel ("Custom event");
 	JLabel calID = new JLabel ("Calender ID");
 	
-	JTextField eIDtxt = new JTextField(30);
+
 	JTextField tytxt = new JTextField(30);
 	JTextField loctxt = new JTextField(30);
 	JTextField cretxt = new JTextField(30);
@@ -53,9 +52,7 @@ public class AddEvent extends JFrame{
 		setLocation(500,290);
 		panel.setLayout(null);
 	
-	
-	
-	eID.setBounds(6,138,100,28);
+
 	ty.setBounds(6,178,100,28);
 	loc.setBounds(6,218,100,22);
 	cre.setBounds(6,252,100,28);
@@ -65,8 +62,7 @@ public class AddEvent extends JFrame{
 	txt.setBounds(277,215,100,28);
 	custev.setBounds(277,252,100,28);
 	calID.setBounds(277,292,100,28);
-	
-	eIDtxt.setBounds(100,138,100,28);
+
 	tytxt.setBounds(100,178,100,28);
 	loctxt.setBounds(100,215,100,28);
 	cretxt.setBounds(100,252,100,28);
@@ -80,7 +76,7 @@ public class AddEvent extends JFrame{
 	Cancel.setBounds(277,395,100,28);
 	
 	
-	panel.add(eID);
+
 	panel.add(ty);
 	panel.add(loc);
 	panel.add(cre);
@@ -91,7 +87,7 @@ public class AddEvent extends JFrame{
 	panel.add(custev);
 	panel.add(calID);
 	
-	panel.add(eIDtxt);
+
 	panel.add(tytxt);
 	panel.add(loctxt);
 	panel.add(cretxt);
@@ -168,13 +164,12 @@ public class AddEvent extends JFrame{
 				if(Eventinprogress.equals("1")){
 System.out.println("naaede her til");
 
-					AddNote notew = new AddNote();
+					AddCalendar notew = new AddCalendar();
 					notew.setVisible(true);
 					dispose();
 					
 				}else{
 					JOptionPane.showMessageDialog(null, "Event was not added!");
-					eIDtxt.setText("");
 					tytxt.setText("");
 					loctxt.setText("");
 					cretxt.setText("");
@@ -184,7 +179,7 @@ System.out.println("naaede her til");
 					txttxt.setText("");
 					custevtxt.setText("");
 					calIDtxt.setText("");
-					eIDtxt.requestFocus();
+					tytxt.requestFocus();
 					
 			
 			

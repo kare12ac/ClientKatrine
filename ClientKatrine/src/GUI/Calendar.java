@@ -77,7 +77,6 @@ import javax.swing.JRadioButtonMenuItem;
 	delcalAction.addActionListener(new delCal_Action());
 	delevAction.addActionListener(new delEvent_Action());
 	delnAction.addActionListener(new delNote_Action());
-	weatherAction.addActionListener(new weather_Action());
 	quoteAction.addActionListener(new quote_Action());
 	}
 	
@@ -115,15 +114,7 @@ import javax.swing.JRadioButtonMenuItem;
 		public void actionPerformed(ActionEvent e){
 			RemoveNote removeNote = new RemoveNote();
 			removeNote.setVisible(true);
-			
-		}
-	}
 		
-		 public class weather_Action implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-			WeatherForcast weatherForcast = new WeatherForcast();
-			weatherForcast.setVisible(true);
-
 			
 			}
 		}
